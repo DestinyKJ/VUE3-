@@ -1,0 +1,23 @@
+1、qs
+  （1）序列化：将对象转化为字符串形式
+       反序列化：将字符串转化为对象
+       
+  （2）qs:
+       qs.stringify() 将对象转化为url形式的字符串，即为url后面的参数。
+       qs.parse() 将字符串转化为对象。
+
+       json：
+       json.stringify() 将转化为json格式的字符串。
+       json.parse() 将json字符串转化为对象。
+       
+  （3）let arr = [1, 2, 3, 4];
+        arr = JSON.stringify(arr);
+        let data = {
+          arr: arr
+        }
+        console.log(data);
+        console.log(qs.stringify(data));
+        console.log(qs.parse(qs.stringify(data)));
+        
+        
+2、URL用于检索互联网上资源机制
