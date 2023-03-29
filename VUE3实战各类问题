@@ -21,3 +21,36 @@
         
         
 2、URL用于检索互联网上资源机制
+
+3、jwt实现https://developer.aliyun.com/article/1042874
+  （1）jwt基于token，传统secssion缓存于内存，访问一多容易炸
+  （2）具体实现：
+      li {
+            list-style: none;
+        }
+   
+   提交
+        let input = document.querySelector('input')
+        let btn = document.querySelector('button')
+        let ul = document.querySelector('ul')
+        btn.addEventListener('click', function () {
+            let arr = getData()  //调用内容，是为了获得已经存入的内容，不然会出现内容覆盖
+            let li = document.createElement('li')
+            li.innerHTML = input.value; //表单值给到li
+            ul.insertBefore(li, ul.children[0]);//在把值给到ul添加值会在第一个
+            arr.push(input.value)
+            saveData(arr)
+            input.value = '' //为好看，输入过后表单的内容自动清空
+        })
+        function saveData(title) {
+            window.localStorage.setItem('input', JSON.stringify(title))
+        }
+        function getData(get) {
+            let data = window.localStorage.getItem('input')
+            console.log(data);//打印所取到的值，但是第一次为空，因为浏览器里面没有值
+            if (data != null) {
+                return JSON.parse(data)
+            } else {
+                return []
+            }
+        }
